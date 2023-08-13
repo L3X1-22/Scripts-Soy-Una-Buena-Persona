@@ -6,7 +6,7 @@ public class Objects : MonoBehaviour
 {
 
     //call call the dialogue manager
-    Dialogue dialogue;
+    DialogueManager dialogue;
 
     //this var calls the player script
     Player playerObject;
@@ -14,6 +14,13 @@ public class Objects : MonoBehaviour
     //var so methods can return text
     private string itemReturned;
     private bool inPlayer = false;
+  
+
+    //aux variables
+    private int lavarCount = 0;
+    private int ropaCount = 0;
+    private bool roperoAbierto = false;
+    private bool roperoAbiertoE = false;
 
     //this method checks if the inventory is open 
     private void checkInventory(){
@@ -41,7 +48,7 @@ public class Objects : MonoBehaviour
     void Start (){
         //get the player object in unity
         playerObject = GameObject.Find("Player").GetComponent<Player>();
-        dialogue = GameObject.Find("DialogueText").GetComponent<Dialogue>();
+        dialogue = GameObject.Find("DialogueText").GetComponent<DialogueManager>();
     }
 
     public void Agenda(){
@@ -51,6 +58,11 @@ public class Objects : MonoBehaviour
 
         //second thing in every method is what the item should do, eather grant access to inventory or what ever it should do
         //TODO: Mostrar cosas por hacer
+        agendaObject.TriggerDialogue();
+        playerObject.inventoryAccess = true;
+        
+
+        Debug.Log("Asd");
 
         dialogue.changeText(1);
 
@@ -64,13 +76,27 @@ public class Objects : MonoBehaviour
 
     public void Cama(bool espejo)
     {
-        
+        if(!espejo)
+        {
+
+        }
+        else
+        {
+            
+        }
     }
 
 
     public void Ropero(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void PrendaVieja()
@@ -109,12 +135,26 @@ public class Objects : MonoBehaviour
 
     public void Reloj(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Balde(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Trapo()
@@ -126,42 +166,98 @@ public class Objects : MonoBehaviour
 
     public void Pintura(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Cuadro(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Televisor(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Salida(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Refrigerador(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Lavadero(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Inodoro(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Botella(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Suciedad()
@@ -171,6 +267,13 @@ public class Objects : MonoBehaviour
 
     public void Cesto(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 }

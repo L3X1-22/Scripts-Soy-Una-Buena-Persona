@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 
-public class Dialogue : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
 
     //this var contains necesary info for csv dialogues
