@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
 
     //this var contains necesary info for csv dialogues
-    private static string dialoguePath = "/CSVdialogues/dialogues.csv";
+    private static string dialoguePath = "/CSVtext/dialogues.csv";
     List<string> spreadedDialogues = new List<string>();
     public TextMeshProUGUI Text;
     
@@ -17,10 +17,10 @@ public class DialogueManager : MonoBehaviour
         //get dialogues from a CSV
         string[] allDialogues = File.ReadAllLines(Application.dataPath + dialoguePath);
         foreach(string strings in allDialogues){
-            Debug.Log(strings);
+            //Debug.Log(strings);
             spreadedDialogues.Add(strings);
         }
-        Debug.Log(spreadedDialogues.Count);
+        //Debug.Log(spreadedDialogues.Count);
     
     }
 

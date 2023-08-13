@@ -5,6 +5,8 @@ using System.Linq;
 
 public class Player : MonoBehaviour
 {
+    // this will be the mirrored self
+    public Monster monster;
 
     //this var allows player to access inventory
     public bool inventoryAccess;
@@ -40,10 +42,14 @@ public class Player : MonoBehaviour
     private string lastPickedObject;
     Objects objectsMethods;
 
+    //var to tell if player is in mirror world
+    public bool espejo = false;
+
     //this method makes the character move, it have to be called every update
     private void playerMovement(){
         //set direction of movement
         Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;        
+        Vector2 monsterDirection = new Vector2(-direction.x, direction.y);
 
         if(direction.x != 0 || direction.y != 0){
             rayDirection = direction;
@@ -51,6 +57,8 @@ public class Player : MonoBehaviour
 
         //set player velocity based on direction
         body.velocity = direction * walkSpeed;
+        //set monster velocity based on direction
+        monster.move(monsterDirection, walkSpeed);
     }
 
     
@@ -109,7 +117,11 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        
+        // update of mirror world flag
+        if (transform.position.x >= -14)
+        {
+            espejo = true;
+        }
         
          //start raycast functions
         raycastManager();

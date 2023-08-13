@@ -52,28 +52,40 @@ public class Objects : MonoBehaviour
         playerObject = GameObject.Find("Player").GetComponent<Player>();
         dialogue = GameObject.Find("DialogueText").GetComponent<DialogueManager>();
     }
+    
+    private IEnumerator WaitForKeyPress(KeyCode key)
+    {
+        bool done = false;
+        while (!done) // essentially a "while true", but with a bool to break out naturally
+        {
+            if (Input.GetKeyDown(key))
+            {
+                done = true; // breaks the loop
+            }
+            yield return null; // wait until next frame, then continue execution from here (loop continues)
+        }
 
-    public void Agenda(){
-        
-        //first thing to do in every method is to write what the item should return if needed
-        itemReturned = "llaveDormitorio";
+        // now this function returns
+    }
+    private IEnumerator Wait(int indexPrimera, int cantidad)
+    {
+        for(int i = indexPrimera; i < cantidad; i++) 
+        {
+            dialogue.changeText(i);
+            // wait for player to press space
+            yield return WaitForKeyPress(KeyCode.Space); // wait for this function to return
+        }
 
-        //second thing in every method is what the item should do, eather grant access to inventory or what ever it should do
-        //TODO: Mostrar cosas por hacer
-        playerObject.inventoryAccess = true;
-        
-
-        Debug.Log("Asd");
-
-        dialogue.changeText(1);
-
-
-        //third and last thing to do is call checkInventory() so we can add the item to inventory if needed 
-        checkInventory();
     }
 
-
     //individual methods for every kind of object
+    public void Agenda()
+    {
+        itemReturned = "llaveDormitorio";
+        playerObject.inventoryAccess = true;
+        StartCoroutine(Wait(0, 2));
+        checkInventory();
+    }
 
     public void Cama(bool espejo)
     {
@@ -81,7 +93,7 @@ public class Objects : MonoBehaviour
         {
             if(!camaTendida)
             {
-                dialogue.changeText(1);
+                dialogue.changeText(3);
                 //Opcion A) Tenderla ahora, B) Mas tarde
                 //A)
                 dialogue.changeText(1);
