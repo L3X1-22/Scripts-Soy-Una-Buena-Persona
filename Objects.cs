@@ -51,4 +51,118 @@ public class Objects : MonoBehaviour
         checkInventory();
     }
 
+
+    //individual methods for every kind of object
+
+    public void Cama(bool espejo)
+    {
+        
+    }
+
+
+    public void Ropero(bool espejo)
+    {
+
+    }
+
+    public void PrendaVieja()
+    {
+
+    }
+
+    public void Ropa()
+    {
+
+    }
+
+    public void PuertaDormitorio()
+    {
+
+    }
+
+    public void PuertasSala()
+    {
+
+    }
+
+    public void JuegoLlaves() 
+    {
+        itemReturned = "JuegoLlaves";
+
+        checkInventory();
+    }
+
+    public void LlaveReloj()
+    {
+        itemReturned = "LlaveReloj";
+
+        checkInventory();
+    }
+
+    public void Reloj(bool espejo)
+    {
+
+    }
+
+    public void Balde(bool espejo)
+    {
+
+    }
+
+    public void Trapo()
+    {
+        itemReturned = "Trapo";
+
+        checkInventory();
+    }
+
+    public void Pintura(bool espejo)
+    {
+
+    }
+
+    public void Cuadro(bool espejo)
+    {
+
+    }
+
+    public void Televisor(bool espejo)
+    {
+
+    }
+
+    public void Salida(bool espejo)
+    {
+
+    }
+
+    public void Refrigerador(bool espejo)
+    {
+
+    }
+
+    public void Lavadero(bool espejo)
+    {
+
+    }
+
+    public void Inodoro(bool espejo)
+    {
+
+    }
+
+    public void Botella(bool espejo)
+    {
+
+    }
+
+    public void Suciedad()
+    {
+
+    }
+
+    public void Cesto(bool espejo)
+    {
+
+    }
 }
