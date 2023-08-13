@@ -19,6 +19,8 @@ public class Objects : MonoBehaviour
     //aux variables
     private int lavarCount = 0;
     private int ropaCount = 0;
+    private bool camaTendida=false;
+    private bool camaTendidaE = false;
     private bool roperoAbierto = false;
     private bool roperoAbiertoE = false;
 
@@ -77,12 +79,41 @@ public class Objects : MonoBehaviour
     {
         if(!espejo)
         {
+            if(!camaTendida)
+            {
+                dialogue.changeText(1);
+                //Opcion A) Tenderla ahora, B) Mas tarde
+                //A)
+                dialogue.changeText(1);
+                camaTendida = true;
+            }
+            else
+            {
+                dialogue.changeText(1);
+            }
 
         }
         else
         {
-            
+            if (!camaTendidaE)
+            {
+                dialogue.changeText(1);
+                //Opcion A) Tenderla ahora, B) Echarse a dormir, C) Mas tarde
+                //A)
+                dialogue.changeText(1);
+                playerObject.score += 1;
+                camaTendidaE = true;
+                //B)
+                dialogue.changeText(1);
+                playerObject.score -= 2;
+            }
+            else
+            {
+                dialogue.changeText(1);
+            }
         }
+
+        //Completar tarea
     }
 
 
@@ -90,45 +121,76 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            if(!roperoAbierto)
+            {
+                dialogue.changeText(1);
+                //Opcion A) Abrir B) Salir
+            }
+            else
+            {
+                dialogue.changeText(1);
+                itemReturned = "prendaVieja";
+            }
         }
         else
         {
-
+            if (!roperoAbiertoE)
+            {
+                dialogue.changeText(1);
+                //Opcion A) Abrir B) Salir
+            }
+            else
+            {
+                dialogue.changeText(1);
+                itemReturned = "llaveReloj";
+            }
         }
     }
 
-    public void PrendaVieja()
-    {
-
-    }
 
     public void Ropa()
     {
-
+        dialogue.changeText(1);
+        ropaCount++;
+        //Opcion A) Agarrar, B) salir
+        itemReturned = "ropa" + ropaCount;
     }
 
     public void PuertaDormitorio()
     {
-
+        if (!playerObject.inventory_Objects.Contains("llaveDormitorio"))
+        {
+            dialogue.changeText(1);
+        }
+        else
+        {
+            //abrir puerta
+        }
     }
 
     public void PuertasSala()
     {
-
+        if (!playerObject.inventory_Objects.Contains("juegoLlaves"))
+        {
+            dialogue.changeText(1);
+        }
+        else
+        {
+            //abrir puerta
+        }
     }
 
     public void JuegoLlaves() 
     {
-        itemReturned = "JuegoLlaves";
-
+        itemReturned = "juegoLlaves";
+        dialogue.changeText(1);
         checkInventory();
     }
 
     public void LlaveReloj()
     {
-        itemReturned = "LlaveReloj";
-
+        itemReturned = "llaveReloj";
+        dialogue.changeText(1);
         checkInventory();
     }
 
@@ -136,11 +198,31 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            if(!playerObject.inventory_Objects.Contains("llaveReloj"))
+            {
+                dialogue.changeText(1);
+            }
+            else
+            {
+                dialogue.changeText(1);
+                //Opcion A) Pararlo B) No hacer nada
+                //A)
+                playerObject.score -= 1;
+            }
         }
         else
         {
-
+            if (!playerObject.inventory_Objects.Contains("llaveReloj"))
+            {
+                dialogue.changeText(1);
+            }
+            else
+            {
+                dialogue.changeText(1);
+                //Opcion A) Darle cuerda B) No hacer nada
+                //A)
+                playerObject.score += 1;
+            }
         }
     }
 
