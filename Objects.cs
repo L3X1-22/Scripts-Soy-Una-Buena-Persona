@@ -10,6 +10,13 @@ public class Objects : MonoBehaviour
     //var so methods can return text
     private string itemReturned;
     private bool inPlayer = false;
+  
+
+    //aux variables
+    private int lavarCount = 0;
+    private int ropaCount = 0;
+    private bool roperoAbierto = false;
+    private bool roperoAbiertoE = false;
 
     //this method checks if the inventory is open 
     private void checkInventory(){
@@ -47,6 +54,8 @@ public class Objects : MonoBehaviour
         //second thing in every method is what the item should do, eather grant access to inventory or what ever it should do
         //TODO: Mostrar cosas por hacer
 
+        Debug.Log("Asd");
+
         //third and last thing to do is call checkInventory() so we can add the item to inventory if needed 
         checkInventory();
     }
@@ -56,13 +65,27 @@ public class Objects : MonoBehaviour
 
     public void Cama(bool espejo)
     {
-        
+        if(!espejo)
+        {
+
+        }
+        else
+        {
+            
+        }
     }
 
 
     public void Ropero(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void PrendaVieja()
@@ -101,12 +124,26 @@ public class Objects : MonoBehaviour
 
     public void Reloj(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Balde(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Trapo()
@@ -118,42 +155,98 @@ public class Objects : MonoBehaviour
 
     public void Pintura(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Cuadro(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Televisor(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Salida(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Refrigerador(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Lavadero(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Inodoro(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Botella(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 
     public void Suciedad()
@@ -163,6 +256,13 @@ public class Objects : MonoBehaviour
 
     public void Cesto(bool espejo)
     {
+        if (!espejo)
+        {
 
+        }
+        else
+        {
+
+        }
     }
 }
