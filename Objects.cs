@@ -6,6 +6,7 @@ public class Objects : MonoBehaviour
 {
     //this var calls the player script
     Player playerObject;
+    Agenda agendaObject;
 
     //var so methods can return text
     private string itemReturned;
@@ -44,6 +45,7 @@ public class Objects : MonoBehaviour
     void Start (){
         //get the player object in unity
         playerObject = GameObject.Find("Player").GetComponent<Player>();
+        agendaObject = GameObject.Find("Agenda").GetComponent<Agenda>();
     }
 
     public void Agenda(){
@@ -53,6 +55,9 @@ public class Objects : MonoBehaviour
 
         //second thing in every method is what the item should do, eather grant access to inventory or what ever it should do
         //TODO: Mostrar cosas por hacer
+        agendaObject.TriggerDialogue();
+        playerObject.inventoryAccess = true;
+        
 
         Debug.Log("Asd");
 
