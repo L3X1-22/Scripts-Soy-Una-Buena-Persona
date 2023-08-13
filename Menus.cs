@@ -12,11 +12,12 @@ public class Menus : MonoBehaviour{
     private bool agendaActive = false;
 
     public float timeBetweenActions;
+    Player playerObject;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
+   void Start (){
+        //get the player object in unity
+        playerObject = GameObject.Find("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class Menus : MonoBehaviour{
             resume();
         }
 
-        if(Input.GetButtonDown("Agenda Menu") && pauseActive == false && agendaActive == false){
+        if(Input.GetButtonDown("Agenda Menu") && pauseActive == false && agendaActive == false && playerObject.inventoryAccess == true){
             openAgenda();
         } else if(Input.GetButtonDown("Agenda Menu") && agendaActive == true || Input.GetButtonDown("Pause") && agendaActive == true){
             closeAgenda();
@@ -76,5 +77,9 @@ public class Menus : MonoBehaviour{
         HUD.SetActive(true);
         agendaActive = false;
         timeBetweenActions = 0f;
+    }
+
+    public void exitGame(){
+        Application.Quit();
     }
 }

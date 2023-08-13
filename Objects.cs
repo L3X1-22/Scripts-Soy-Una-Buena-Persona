@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Objects : MonoBehaviour
 {
+
+    //call call the dialogue manager
+    Dialogue dialogue;
+
     //this var calls the player script
     Player playerObject;
 
@@ -37,6 +41,7 @@ public class Objects : MonoBehaviour
     void Start (){
         //get the player object in unity
         playerObject = GameObject.Find("Player").GetComponent<Player>();
+        dialogue = GameObject.Find("DialogueText").GetComponent<Dialogue>();
     }
 
     public void Agenda(){
@@ -46,6 +51,9 @@ public class Objects : MonoBehaviour
 
         //second thing in every method is what the item should do, eather grant access to inventory or what ever it should do
         //TODO: Mostrar cosas por hacer
+
+        dialogue.changeText(1);
+
 
         //third and last thing to do is call checkInventory() so we can add the item to inventory if needed 
         checkInventory();
