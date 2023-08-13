@@ -6,6 +6,9 @@ using System.Linq;
 public class Player : MonoBehaviour
 {
 
+    //this var allows player to access inventory
+    public bool inventoryAccess;
+
     //this var affects directly to history
     public int score;
 
