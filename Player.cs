@@ -109,14 +109,14 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        //make character move
-        playerMovement();
-
+        
+        
          //start raycast functions
         raycastManager();
     }
 
     void FixedUpdate(){
-        
+        //make character move
+        playerMovement();
     }
 }
