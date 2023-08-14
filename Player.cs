@@ -5,9 +5,6 @@ using System.Linq;
 
 public class Player : MonoBehaviour
 {
-    // this will be the mirrored self
-    public Monster monster;
-
     //this var allows player to access inventory
     public bool inventoryAccess;
 
@@ -33,6 +30,7 @@ public class Player : MonoBehaviour
     public float distance;
     public LayerMask layerMask;
     
+    
     //var to handle raycast hit
     Vector2 rayDirection = new Vector2(0,0);
     private bool collition;
@@ -57,14 +55,13 @@ public class Player : MonoBehaviour
 
         //set player velocity based on direction
         body.velocity = direction * walkSpeed;
-        //set monster velocity based on direction
-        monster.move(monsterDirection, walkSpeed);
+
     }
 
     
     //this method calls methods of objects using switch case
     private void callMethods(){
-        Debug.Log(RcHit.collider.gameObject.tag.GetType());
+        
         objectsMethods = RcHit.collider.gameObject.GetComponent<Objects>();
         switch(RcHit.collider.gameObject.tag){
             case "Agenda":
@@ -72,7 +69,6 @@ public class Player : MonoBehaviour
             //call method of object if "Fire1" pressed (modify in project settings)
             if(Input.GetButtonDown("Fire1")){
                 objectsMethods.Agenda();
-
             }
             break;
         } 
@@ -82,9 +78,6 @@ public class Player : MonoBehaviour
     private void inventoryManager(){
         //delete duplicated objects
         inventory_Objects = inventory_Objects.Distinct().ToList();
-
-        //iter inventory objects just in case
-        Debug.Log(inventory_Objects.Count);
     }
 
     //this function showsdebug raycast so you can see it in editor and calls methods
@@ -99,6 +92,7 @@ public class Player : MonoBehaviour
 
             //call method of object
             callMethods();
+        
             //cleans inventory
             inventoryManager();
 

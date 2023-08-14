@@ -16,7 +16,7 @@ public class Menus : MonoBehaviour{
 
     // Start is called before the first frame update
    void Start (){
-        //get the player object in unity
+        //get the player object in unity        
         playerObject = GameObject.Find("Player").GetComponent<Player>();
     }
 
@@ -36,7 +36,6 @@ public class Menus : MonoBehaviour{
         }
 
         timeBetweenActions = timeBetweenActions * Time.deltaTime; 
-        Debug.Log(timeBetweenActions);
     }
 
     void FixedUpdate(){

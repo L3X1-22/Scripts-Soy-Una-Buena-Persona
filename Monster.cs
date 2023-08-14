@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    //var to get the character move and animate it
-    public Rigidbody2D body;
-    public SpriteRenderer spriterenderer;
-    public void move(Vector2 direction, float walkSpeed)
+    //var to get the object of player
+    private GameObject player;
+
+    void Start(){
+        player = GameObject.Find("Player");
+    }
+    public void FixedUpdate()
     {
-        body.velocity = direction * walkSpeed;
+        gameObject.transform.position = new Vector3(-player.transform.position.x, player.transform.position.y, player.transform.position.z);
     }
 }

@@ -6,7 +6,7 @@ public class Objects : MonoBehaviour
 {
 
     //call call the dialogue manager
-    DialogueManager dialogue;
+    public DialogueManager dialogue;
 
     //this var calls the player script
     Player playerObject;
@@ -51,42 +51,27 @@ public class Objects : MonoBehaviour
         //get the player object in unity
         playerObject = GameObject.Find("Player").GetComponent<Player>();
         dialogue = GameObject.Find("DialogueText").GetComponent<DialogueManager>();
+        dialogue.gameObject.SetActive(false);
+    }
+
+    void Update(){
+        
     }
     
-    private IEnumerator WaitForKeyPress(KeyCode key)
-    {
-        bool done = false;
-        while (!done) // essentially a "while true", but with a bool to break out naturally
-        {
-            if (Input.GetKeyDown(key))
-            {
-                done = true; // breaks the loop
-            }
-            yield return null; // wait until next frame, then continue execution from here (loop continues)
-        }
 
-        // now this function returns
-    }
-    private IEnumerator Wait(int indexPrimera, int cantidad)
-    {
-        for(int i = indexPrimera; i < cantidad; i++) 
-        {
-            dialogue.changeText(i);
-            // wait for player to press space
-            yield return WaitForKeyPress(KeyCode.Space); // wait for this function to return
-        }
-
-    }
+    
 
     //individual methods for every kind of object
     public void Agenda()
     {
         itemReturned = "llaveDormitorio";
         playerObject.inventoryAccess = true;
-        StartCoroutine(Wait(0, 2));
+        StartCoroutine(dialogue.showText(0, 2));
         checkInventory();
+        dialogue.tag = "Agenda";
     }
 
+/*
     public void Cama(bool espejo)
     {
         if(!espejo)
@@ -368,5 +353,5 @@ public class Objects : MonoBehaviour
         {
 
         }
-    }
+    }*/
 }
