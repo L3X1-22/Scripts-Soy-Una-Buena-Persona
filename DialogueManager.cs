@@ -31,30 +31,30 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    private void changeText(int dialogue){
+    private void ChangeText(int dialogue){
         Text.text = spreadedDialogues[dialogue];
     }
 
     private IEnumerator WaitForKeyPress(KeyCode Key){
-    bool done = false;
-    while (!done){ // essentially a "while true", but with a bool to break out naturally
+        bool done = false;
+        while (!done){ // essentially a "while true", but with a bool to break out naturally
 
-        if (Input.GetKeyDown(Key)){
+            if (Input.GetKeyDown(Key)){
 
-            done = true; // breaks the loop
+                done = true; // breaks the loop
+            }
+            yield return null; // wait until next frame, then continue execution from here (loop continues)
         }
-        yield return null; // wait until next frame, then continue execution from here (loop continues)
+
+            // now this function returns
     }
 
-        // now this function returns
-    }
-
-    public IEnumerator showText(int indexPrimera, int cantidad)
+    public IEnumerator ShowText(int indexPrimera, int cantidad)
     {
         gameObject.SetActive(true);
         Time.timeScale = 0f;
         for(int i = 0; i < cantidad; i++){
-            changeText(indexPrimera);
+            ChangeText(indexPrimera);
             indexPrimera ++;
             // wait for player to press space
             yield return WaitForKeyPress(KeyCode.Space); // wait for this function to return
