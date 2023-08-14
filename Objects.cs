@@ -19,6 +19,8 @@ public class Objects : MonoBehaviour
     //aux variables
     private int lavarCount = 0;
     private int ropaCount = 0;
+    private int limpioCount = 0;
+    private int TaskCount = 0;
     private bool camaTendida=false;
     private bool camaTendidaE = false;
     private bool roperoAbierto = false;
@@ -47,6 +49,14 @@ public class Objects : MonoBehaviour
         }
     }
 
+    private void dropItem(string name)
+    {
+        if (playerObject.inventory_Objects.Contains(name)) 
+        {
+            playerObject.inventory_Objects.Remove(name);     
+        }
+    }
+
     void Start (){
         //get the player object in unity
         playerObject = GameObject.Find("Player").GetComponent<Player>();
@@ -59,8 +69,6 @@ public class Objects : MonoBehaviour
     }
     
 
-    
-
     //individual methods for every kind of object
     public void Agenda()
     {
@@ -71,22 +79,22 @@ public class Objects : MonoBehaviour
         dialogue.tag = "Agenda";
     }
 
-/*
+
     public void Cama(bool espejo)
     {
         if(!espejo)
         {
             if(!camaTendida)
             {
-                dialogue.changeText(3);
+                StartCoroutine(dialogue.showText(0,2));
                 //Opcion A) Tenderla ahora, B) Mas tarde
                 //A)
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 camaTendida = true;
             }
             else
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
             }
 
         }
@@ -94,19 +102,19 @@ public class Objects : MonoBehaviour
         {
             if (!camaTendidaE)
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 //Opcion A) Tenderla ahora, B) Echarse a dormir, C) Mas tarde
                 //A)
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 playerObject.score += 1;
                 camaTendidaE = true;
                 //B)
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 playerObject.score -= 2;
             }
             else
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
             }
         }
 
@@ -120,12 +128,12 @@ public class Objects : MonoBehaviour
         {
             if(!roperoAbierto)
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 //Opcion A) Abrir B) Salir
             }
             else
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 itemReturned = "prendaVieja";
             }
         }
@@ -133,12 +141,12 @@ public class Objects : MonoBehaviour
         {
             if (!roperoAbiertoE)
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 //Opcion A) Abrir B) Salir
             }
             else
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 itemReturned = "llaveReloj";
             }
         }
@@ -147,7 +155,7 @@ public class Objects : MonoBehaviour
 
     public void Ropa()
     {
-        dialogue.changeText(1);
+        StartCoroutine(dialogue.showText(0,2));
         ropaCount++;
         //Opcion A) Agarrar, B) salir
         itemReturned = "ropa" + ropaCount;
@@ -157,7 +165,7 @@ public class Objects : MonoBehaviour
     {
         if (!playerObject.inventory_Objects.Contains("llaveDormitorio"))
         {
-            dialogue.changeText(1);
+            StartCoroutine(dialogue.showText(0,2));
         }
         else
         {
@@ -169,7 +177,7 @@ public class Objects : MonoBehaviour
     {
         if (!playerObject.inventory_Objects.Contains("juegoLlaves"))
         {
-            dialogue.changeText(1);
+            StartCoroutine(dialogue.showText(0,2));
         }
         else
         {
@@ -180,14 +188,14 @@ public class Objects : MonoBehaviour
     public void JuegoLlaves() 
     {
         itemReturned = "juegoLlaves";
-        dialogue.changeText(1);
+        StartCoroutine(dialogue.showText(0,2));
         checkInventory();
     }
 
     public void LlaveReloj()
     {
         itemReturned = "llaveReloj";
-        dialogue.changeText(1);
+        StartCoroutine(dialogue.showText(0,2));
         checkInventory();
     }
 
@@ -197,11 +205,11 @@ public class Objects : MonoBehaviour
         {
             if(!playerObject.inventory_Objects.Contains("llaveReloj"))
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
             }
             else
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 //Opcion A) Pararlo B) No hacer nada
                 //A)
                 playerObject.score -= 1;
@@ -211,11 +219,11 @@ public class Objects : MonoBehaviour
         {
             if (!playerObject.inventory_Objects.Contains("llaveReloj"))
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
             }
             else
             {
-                dialogue.changeText(1);
+                StartCoroutine(dialogue.showText(0,2));
                 //Opcion A) Darle cuerda B) No hacer nada
                 //A)
                 playerObject.score += 1;
@@ -227,18 +235,39 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            if (!playerObject.inventory_Objects.Contains("Trapo"))
+            {
+                StartCoroutine(dialogue.showText(0,2));
+            }
+            else
+            {
+                StartCoroutine(dialogue.showText(0,2));
+                //Opcion A) Mojar el Trapo B) No hacer nada
+                itemReturned = "TrapoMojado";
+                checkInventory();
+            }
         }
         else
         {
-
+            if (!playerObject.inventory_Objects.Contains("Trapo"))
+            {
+                StartCoroutine(dialogue.showText(0,2))
+            }
+            else
+            {
+                StartCoroutine(dialogue.showText(0,2))
+                //Opcion A) Mojar el Trapo B) No hacer nada
+                itemReturned = "TrapoTurbio";
+                checkInventory();
+            }
+           
         }
     }
 
     public void Trapo()
     {
+        StartCoroutine(dialogue.showText(0,2))
         itemReturned = "Trapo";
-
         checkInventory();
     }
 
@@ -246,11 +275,22 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            StartCoroutine(dialogue.showText(0,2))
+            //Opcion A) Descolgar B) No hacer nada
         }
         else
         {
-
+            if (!playerObject.inventory_Objects.Contains("Pintura"))
+            {
+                StartCoroutine(dialogue.showText(0,2))
+            }
+            else
+            {
+                StartCoroutine(dialogue.showText(0,2))
+                //Opcion A) Colgar la Pintura B) No hacer nada
+                //A)
+                playerObject.score += 1;
+            }
         }
     }
 
@@ -258,11 +298,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
         else
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
     }
 
@@ -270,11 +310,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
         else
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
     }
 
@@ -282,11 +322,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
         else
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
     }
 
@@ -294,11 +334,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
         else
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
     }
 
@@ -306,11 +346,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
         else
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
     }
 
@@ -318,11 +358,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
         else
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
     }
 
@@ -330,28 +370,53 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-
+            StartCoroutine(dialogue.showText(0,2))
+            //Opcion A) Beber B) No hacer nada
+            playerObject.score -= 1;
         }
         else
         {
-
+            StartCoroutine(dialogue.showText(0,2))
+            //Opcion A) Beber B) No hacer nada
+            playerObject.score += 1;
         }
     }
 
     public void Suciedad()
     {
-
+        //Opcion A) Limpiar B) No hacer nada
+        if (playerObject.inventory_Objects.Contains("TrapoMojado"))
+        {
+            StartCoroutine(dialogue.showText(0,2))
+            limpioCount++;
+        }
     }
 
     public void Cesto(bool espejo)
     {
         if (!espejo)
         {
+            if (playerObject.inventory_Objects.Contains("PrendaVieja"))
+            {
+                StartCoroutine(dialogue.showText(0,2))
+                //Opcion A) Tirar B) No hacer nada
+                //A)
+                playerObject.score -= 1;
+            }
+
+            if (playerObject.inventory_Objects.Contains("Pintura"))
+            {
+                StartCoroutine(dialogue.showText(0,2))
+                //Opcion A) Tirar B) No hacer nada
+                //A)
+                playerObject.score -= 1;
+            }
+
 
         }
         else
         {
-
+            StartCoroutine(dialogue.showText(0,2))
         }
-    }*/
+    }
 }
