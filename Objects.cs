@@ -251,11 +251,11 @@ public class Objects : MonoBehaviour
         {
             if (!playerObject.inventory_Objects.Contains("Trapo"))
             {
-                StartCoroutine(dialogue.showText(0,2))
+                StartCoroutine(dialogue.showText(0,2));
             }
             else
             {
-                StartCoroutine(dialogue.showText(0,2))
+                StartCoroutine(dialogue.showText(0, 2));
                 //Opcion A) Mojar el Trapo B) No hacer nada
                 itemReturned = "TrapoTurbio";
                 checkInventory();
@@ -266,7 +266,7 @@ public class Objects : MonoBehaviour
 
     public void Trapo()
     {
-        StartCoroutine(dialogue.showText(0,2))
+        StartCoroutine(dialogue.showText(0, 2));
         itemReturned = "Trapo";
         checkInventory();
     }
@@ -275,18 +275,18 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
             //Opcion A) Descolgar B) No hacer nada
         }
         else
         {
             if (!playerObject.inventory_Objects.Contains("Pintura"))
             {
-                StartCoroutine(dialogue.showText(0,2))
+                StartCoroutine(dialogue.showText(0, 2));
             }
             else
             {
-                StartCoroutine(dialogue.showText(0,2))
+                StartCoroutine(dialogue.showText(0, 2));
                 //Opcion A) Colgar la Pintura B) No hacer nada
                 //A)
                 playerObject.score += 1;
@@ -298,11 +298,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
         else
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
     }
 
@@ -310,11 +310,7 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-            StartCoroutine(dialogue.showText(0,2))
-        }
-        else
-        {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2)); 
         }
     }
 
@@ -322,11 +318,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
         else
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
     }
 
@@ -334,11 +330,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
         else
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
     }
 
@@ -346,11 +342,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
         else
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
     }
 
@@ -358,11 +354,11 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
         else
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
     }
 
@@ -370,13 +366,13 @@ public class Objects : MonoBehaviour
     {
         if (!espejo)
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
             //Opcion A) Beber B) No hacer nada
             playerObject.score -= 1;
         }
         else
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
             //Opcion A) Beber B) No hacer nada
             playerObject.score += 1;
         }
@@ -387,7 +383,7 @@ public class Objects : MonoBehaviour
         //Opcion A) Limpiar B) No hacer nada
         if (playerObject.inventory_Objects.Contains("TrapoMojado"))
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
             limpioCount++;
         }
     }
@@ -398,7 +394,7 @@ public class Objects : MonoBehaviour
         {
             if (playerObject.inventory_Objects.Contains("PrendaVieja"))
             {
-                StartCoroutine(dialogue.showText(0,2))
+                StartCoroutine(dialogue.showText(0, 2));
                 //Opcion A) Tirar B) No hacer nada
                 //A)
                 playerObject.score -= 1;
@@ -406,7 +402,7 @@ public class Objects : MonoBehaviour
 
             if (playerObject.inventory_Objects.Contains("Pintura"))
             {
-                StartCoroutine(dialogue.showText(0,2))
+                StartCoroutine(dialogue.showText(0, 2));
                 //Opcion A) Tirar B) No hacer nada
                 //A)
                 playerObject.score -= 1;
@@ -416,7 +412,7 @@ public class Objects : MonoBehaviour
         }
         else
         {
-            StartCoroutine(dialogue.showText(0,2))
+            StartCoroutine(dialogue.showText(0, 2));
         }
     }
 }
