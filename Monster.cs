@@ -6,6 +6,7 @@ public class Monster : MonoBehaviour
 {
     //var to get the object of player
     private GameObject player;
+    public SpriteRenderer spriterenderer;
 
     void Start(){
         player = GameObject.Find("Player");
@@ -14,4 +15,5 @@ public class Monster : MonoBehaviour
     {
         gameObject.transform.position = new Vector3(-player.transform.position.x, player.transform.position.y, player.transform.position.z);
     }
+
 }

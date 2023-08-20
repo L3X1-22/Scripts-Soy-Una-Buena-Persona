@@ -46,8 +46,7 @@ public class Player : MonoBehaviour
     //this method makes the character move, it have to be called every update
     private void playerMovement(){
         //set direction of movement
-        Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;        
-        Vector2 monsterDirection = new Vector2(-direction.x, direction.y);
+        Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
         if(direction.x != 0 || direction.y != 0){
             rayDirection = direction;
@@ -66,12 +65,22 @@ public class Player : MonoBehaviour
         switch(RcHit.collider.gameObject.tag){
             case "Agenda":
             
-            //call method of object if "Fire1" pressed (modify in project settings)
-            if(Input.GetButtonDown("Fire1")){
-                objectsMethods.Agenda();
-            }
+                //call method of object if "Fire1" pressed (modify in project settings)
+                if(Input.GetButtonDown("Fire1")){
+                    objectsMethods.Agenda();
+                }
             break;
-        } 
+
+            case "Monster":
+                Debug.Log("monster case");
+
+                //call method of object if "Fire1" pressed (modify in project settings)
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    objectsMethods.CambiarIdentidad();
+                }
+            break;
+        }
     }
     
     //this method manages inventory
